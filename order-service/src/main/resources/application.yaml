@@ -1,0 +1,33 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    url: jdbc:h2:file:~/mem_data/orders
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+security:
+  oauth2:
+    client:
+      client-id: order-service
+      client-secret: ${CLIENT_SECRET:123456}
+    resource:
+      token-info-uri: 'http://localhost:8080/oauth/check_token'
+      user-info-uri: 'http://localhost:8090/orders'
+
