@@ -16,6 +16,7 @@ import java.util.Set;
 @Builder
 public class Role extends BaseModel {
     private String name;
+
     @ToString.Exclude
     @Builder.Default
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
@@ -25,10 +26,4 @@ public class Role extends BaseModel {
             inverseJoinColumns = {@JoinColumn(name = "permission_id")}
     )
     private Set<Permission> permissions = new HashSet<>();
-
-    @ToString.Exclude
-    @Builder.Default
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id")
-    private Set<User> users = new HashSet<>();
 }
