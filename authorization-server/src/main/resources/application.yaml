@@ -1,0 +1,38 @@
+server:
+  port: 9000
+
+spring:
+  datasource:
+    url: jdbc:h2:file:~/mem_data/authcb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+
+    show-sql: true
+
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+
+
+
+client:
+  registered-clients:
+    - id: a9a68c8c-44a2-415f-a38e-7fca5e2ee55f
+      client-id: web-app-client
+      client-secret: 123456
+      scopes: [ 'openid','customers.read','customers.write' ]
+      redirect-uris: [ 'http://localhost:8080/login/oauth2/code/web-app-client-oidc','http://localhost:8080/authorized' ]
+      client-authentication-methods: [ 'client_secret_basic' ]
+      authorization-grant-types: [ 'password','authorization_code','refresh_token','client_credentials' ]
