@@ -22,6 +22,7 @@ public class AppClientProperties {
         private String clientSecret;
         private Set<String> redirectUris;
         private Set<String> scopes;
+        private String clientName;
         private Set<ClientAuthenticationMethod> clientAuthenticationMethods = new HashSet<>();
         private Set<AuthorizationGrantType> authorizationGrantTypes = new HashSet<>();
     }

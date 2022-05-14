@@ -24,6 +24,8 @@ public class DefaultSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeRequests().anyRequest().authenticated()
                 .and()
+                .cors().disable()
+                .csrf().disable()
                 .formLogin(Customizer.withDefaults())
                 .build();
     }

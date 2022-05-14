@@ -52,6 +52,7 @@ public class AuthorizationServerConfig {
         Set<RegisteredClient> registeredClients = appClientProperties.getRegisteredClients().stream().map(properties ->
                 RegisteredClient.withId(properties.getId())
                         .clientId(properties.getClientId())
+                        .clientName(properties.getClientName())
                         .clientSecret(passwordEncoder.encode(properties.getClientSecret()))
                         .clientAuthenticationMethods(methods ->
                                 methods.addAll(properties.getClientAuthenticationMethods())

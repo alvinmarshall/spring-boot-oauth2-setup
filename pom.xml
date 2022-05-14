@@ -19,6 +19,7 @@
     </properties>
 
     <modules>
+        <module>gateway</module>
         <module>authorization-server</module>
         <module>customer-service</module>
         <module>auth-service</module>
